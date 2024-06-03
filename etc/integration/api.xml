@@ -1,0 +1,8 @@
+<integrations>
+    <integration name="TestIntegration">
+        <resources>
+            <resource name="Magento_Catalog::catalog" />
+            <resource name="Drf_CustomBeGrid::home" />
+        </resources>
+    </integration>
+</integrations>

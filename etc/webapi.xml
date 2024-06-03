@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/rest_test/getCategory/:id" method="GET">
+        <service class="Drf\CustomBeGrid\Api\CategoryRepositoryInterface" method="getItem" />
+        <resources>
+            <resource ref="Drf_CustomBeGrid::home" />
+        </resources>
+    </route>
+    <route url="/V1/rest_test/getCategories" method="GET">
+        <service class="Drf\CustomBeGrid\Api\CategoryRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="Drf_CustomBeGrid::home" />
+        </resources>
+    </route>
+</routes>

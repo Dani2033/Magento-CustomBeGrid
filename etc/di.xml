@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="Drf\CustomBeGrid\Ui\DataProvider\Category\ListingDataProvider">
+    <plugin name="drf_custombegrid_attributes" type="Drf\CustomBeGrid\Plugin\AddAttributesToUiDataProvider" />
+  </type>
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+      <argument name="collections" xsi:type="array">
+        <item name="drf_custombegrid_category_listing_data_source" xsi:type="string">DrfCustomBeGridCategoryCollection</item>
+      </argument>
+    </arguments>
+  </type>
+  <virtualType name="DrfCustomBeGridCategoryCollection" type="Drf\CustomBeGrid\Ui\DataProvider\Category\Listing\Collection">
+    <arguments>
+      <argument name="mainTable" xsi:type="string">catalog_category_entity</argument>
+      <argument name="resourceModel" xsi:type="string">Drf\CustomBeGrid\Model\ResourceModel\Category</argument>
+    </arguments>
+  </virtualType>
+  <!-- Custom Tumbnail Image -->
+  <type name="Drf\CustomBeGrid\Controller\Adminhtml\Category\Thumbnail\Upload">
+      <arguments>
+          <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+      </arguments>
+  </type>
+  <virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
+      <arguments>
+          <argument name="baseTmpPath" xsi:type="string">custom/tmp/category</argument>
+          <argument name="basePath" xsi:type="string">custom/category</argument>
+          <argument name="allowedExtensions" xsi:type="array">
+              <item name="jpg" xsi:type="string">jpg</item>
+              <item name="jpeg" xsi:type="string">jpeg</item>
+              <item name="gif" xsi:type="string">gif</item>
+              <item name="png" xsi:type="string">png</item>
+          </argument>
+      </arguments>
+  </virtualType>
+  <!-- API -->
+  <preference for="Drf\CustomBeGrid\Api\CategoryRepositoryInterface" type="Drf\CustomBeGrid\Model\Api\CategoryRepository" />
+  <preference for="Drf\CustomBeGrid\Api\RequestItemInterface" type="Drf\CustomBeGrid\Model\Api\RequestItem" />
+  <preference for="Drf\CustomBeGrid\Api\ResponseItemInterface" type="Drf\CustomBeGrid\Model\Api\ResponseItem" />
+</config>

@@ -1,0 +1,5 @@
+<integrations>
+   <integration name="TestIntegration">
+      <email>admin@test.com</email>
+   </integration>
+</integrations>

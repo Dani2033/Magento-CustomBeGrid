@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_category_save_after">
+        <observer name="custombegrid_save_after_observer" instance="Drf\CustomBeGrid\Observer\CategorySaveAfter" />
+    </event>
+    <event name="catalog_category_delete_before">
+        <observer name="custombegrid_delete_before_observer" instance="Drf\CustomBeGrid\Observer\CategoryDeleteBefore" />
+    </event> 
+</config>
